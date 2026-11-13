@@ -483,27 +483,16 @@ export async function apiLogin(username, password) {
     return normalizeAuthUser(payload, username);
   } catch (err) {
     const detail = err?.response?.data?.detail;
-    const isNetworkOr502 = !err.response || err.response.status === 502 || err.response.status === 504 || err.code === 'ERR_NETWORK';
-
-    if (detail && !isNetworkOr502) {
-      throw new Error(typeof detail === 'string' ? detail : 'Login failed. Please try again.');
+    if (detail) {
+      throw new Error(typeof detail === 'string' ? detail : 'Incorrect username or password');
     }
-
-    console.warn('Backend offline or returning error, falling back:', err);
-    await delay(400);
-    const normalizedUsername = username.trim().toLowerCase();
-    const foundUser = mockUsers.find(u => u.username.toLowerCase() === normalizedUsername);
-    if (foundUser) {
-      return { ...foundUser, token: 'mock-jwt-' + Date.now() };
+    if (err?.response?.status === 401 || err?.response?.status === 403) {
+      throw new Error('Incorrect username or password');
     }
-    return {
-      id: Date.now(),
-      username,
-      fullName: username === 'admin' ? 'Rajesh Kumar (Admin)' : username,
-      role: username.toLowerCase().includes('admin') ? 'admin' : 'employee',
-      department: 'Production',
-      token: 'mock-jwt-' + Date.now(),
-    };
+    if (err?.code === 'ERR_NETWORK' || !err?.response) {
+      throw new Error('Unable to connect to server. Please check your internet connection or server status.');
+    }
+    throw new Error('Login failed. Please check your credentials and try again.');
   }
 }
 
