@@ -59,7 +59,7 @@ export default function Sidebar({
               {/* Mobile: Full logo + close button */}
               <div className="flex items-center justify-between w-full lg:hidden">
                 <div className="flex h-12 items-center">
-                  <img src="/sata-vikas-logo-transparent.png" alt="Sata Vikas" className="h-12 w-auto object-contain" />
+                  <img src={`${import.meta.env.BASE_URL}sata-vikas-logo-transparent.png`} alt="Sata Vikas" className="h-12 w-auto object-contain" />
                 </div>
                 <button
                   onClick={onClose}
@@ -72,7 +72,7 @@ export default function Sidebar({
               {/* Desktop Collapsed: Emblem + Toggle Button */}
               <div className="hidden lg:flex flex-col items-center gap-3 w-full">
                 <div className="group relative flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 shadow-sm p-1.5 hover:scale-105 transition-transform">
-                  <img src="/sata-vikas-logo-transparent.png" alt="Sata Vikas" className="h-8 w-8 object-contain" />
+                  <img src={`${import.meta.env.BASE_URL}sata-vikas-logo-transparent.png`} alt="Sata Vikas" className="h-8 w-8 object-contain" />
                   <span className="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-medium rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-lg">
                     Sata Vikas India
                   </span>
@@ -98,7 +98,7 @@ export default function Sidebar({
               <div className="flex items-center gap-3 min-w-0">
                 <div className="flex h-14 items-center justify-start rounded-xl p-1 transition-transform">
                   <img
-                    src="/sata-vikas-logo-transparent.png"
+                    src={`${import.meta.env.BASE_URL}sata-vikas-logo-transparent.png`}
                     alt="Sata Vikas"
                     className="h-12 max-w-[200px] w-auto object-contain drop-shadow-sm"
                   />

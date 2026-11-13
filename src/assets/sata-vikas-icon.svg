@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <g id="Emblem" transform="translate(60, 60)">
+    <!-- Center Green Circle -->
+    <circle cx="0" cy="0" r="13" fill="#20b26c" />
+    
+    <!-- 8 Radial Blue Chevrons (V-shapes) -->
+    <!-- Top (0 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Top-Right (45 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(45)" />
+    <!-- Right (90 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(90)" />
+    <!-- Bottom-Right (135 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(135)" />
+    <!-- Bottom (180 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180)" />
+    <!-- Bottom-Left (225 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(225)" />
+    <!-- Left (270 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(270)" />
+    <!-- Top-Left (315 deg) -->
+    <path d="M-8,-26 L0,-38 L8,-26" fill="none" stroke="#1e70b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(315)" />
+  </g>
+</svg>

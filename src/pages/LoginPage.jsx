@@ -51,7 +51,7 @@ export default function LoginPage() {
       <div className="relative my-8 w-full max-w-md animate-slide-up">
         <div className="mb-8 text-center">
           <div className="mb-4 inline-flex items-center justify-center rounded-2xl border border-slate-200/80 bg-white px-5 py-3 shadow-xl shadow-indigo-500/10 dark:border-slate-700/80 dark:bg-slate-900/90 backdrop-blur-md">
-            <img src="/sata-vikas-logo-transparent.png" alt="Sata Vikas Logo" className="h-10 w-auto object-contain" />
+            <img src={`${import.meta.env.BASE_URL}sata-vikas-logo-transparent.png`} alt="Sata Vikas Logo" className="h-10 w-auto object-contain" />
           </div>
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">Production &amp; TPM Tracker</h1>
           <p className="mt-1 text-xs font-medium text-indigo-600 dark:text-indigo-300 sm:text-sm">Sata Vikas India Pvt Ltd · Palwal Plant</p>

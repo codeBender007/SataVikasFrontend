@@ -18,7 +18,7 @@ export default function App() {
       <AuthProvider>
         <SearchProvider>
 
-          <BrowserRouter>
+          <BrowserRouter basename="/satavikas">
             <Routes>
               {/* Public Route */}
               <Route path="/login" element={<LoginPage />} />

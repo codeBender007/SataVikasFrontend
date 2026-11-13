@@ -52,7 +52,7 @@ export default function AppLayout() {
             </button>
             <div className="flex items-center gap-3 lg:hidden">
               <div className="flex h-10 w-[100px] items-center rounded-xl bg-white px-1 shadow-sm ring-1 ring-slate-200/80 dark:bg-slate-100 dark:ring-slate-700">
-                <img src="/sata-vikas-logo.svg" alt="Sata Vikas" className="h-7 w-full object-contain" />
+                <img src={`${import.meta.env.BASE_URL}sata-vikas-logo.svg`} alt="Sata Vikas" className="h-7 w-full object-contain" />
               </div>
             </div>
             <div className="hidden lg:block pl-1">

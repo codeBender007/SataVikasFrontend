@@ -84,7 +84,7 @@ export default function ToolHandoverSheet({ records = [], details = {}, onRecord
               <tr className="bg-slate-50/80 dark:bg-slate-800/40 border-b border-slate-400 dark:border-slate-600">
                 <td colSpan={3} className="px-3 py-1.5 border-r border-slate-400 dark:border-slate-600">
                   <div className="flex items-center gap-2">
-                    <img src="/sata-vikas-logo.svg" alt="Logo" className="h-4 w-auto" />
+                    <img src={`${import.meta.env.BASE_URL}sata-vikas-logo.svg`} alt="Logo" className="h-4 w-auto" />
                     <span className="font-bold text-[11px] text-slate-900 dark:text-slate-100">
                       Page B
                     </span>

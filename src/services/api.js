@@ -4,6 +4,16 @@ import { createEmptyFormData, TPM_LOSS_CATEGORIES } from '../types/models';
 
 export { apiClient, API_BASE_URL };
 
+export function resolveImagePath(path) {
+  if (!path) return null;
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const baseUrl = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE_URL) || '/satavikas/api';
+  const cleanBase = baseUrl.replace(/\/+$/, '');
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  if (cleanPath.startsWith(cleanBase)) return cleanPath;
+  return `${cleanBase}${cleanPath}`;
+}
+
 // Flag to toggle between Real Backend API calls and local Mock fallback
 const USE_MOCK_FALLBACK = false;
 
@@ -357,7 +367,7 @@ export function normalizeBackendFormA(raw) {
     pdiOkPart2: raw.pdiOkPart2 || raw.pdi_ok_part2 || '',
     abnormalityToolChange: raw.abnormalityToolChange || raw.abnormality_parts || raw.abnormalityParts || '',
     otherAbnormality: raw.otherAbnormality || raw.other_abnormality || '',
-    imagePath: raw.imagePath || raw.image_path || null,
+    imagePath: resolveImagePath(raw.imagePath || raw.image_path),
     tpmLosses,
     totalProduction: raw.totalProduction ?? raw.total_production ?? totalProduction,
     totalLossMin: raw.totalLossMin ?? raw.total_loss_min ?? totalLossMin,
@@ -603,7 +613,7 @@ export async function extractFormDataFromImage(file) {
       });
       return {
         ...extracted,
-        imagePath: res.data?.image_path || extracted.imagePath || null,
+        imagePath: resolveImagePath(res.data?.image_path || extracted.imagePath),
         lowConfidenceFields: extractionPayload?.low_confidence_fields || [],
         detectedFormType: res.data?.detected_form_type || 'A',
       };
@@ -802,7 +812,7 @@ export const getProductionLogs = getFilteredFormAList;
 export async function getFormAById(id) {
   if (!USE_MOCK_FALLBACK) {
     try {
-      const res = await apiClient.get(`form-a/${id}`);
+      const res = await apiClient.get(`/form-a/${id}`);
       return normalizeBackendFormA(res.data);
     } catch (err) {
       console.warn(`Backend API /form-a/${id} fetch failed:`, err);
@@ -869,7 +879,7 @@ export async function extractFormBDataFromImage(file) {
       const extracted = res.data?.data || res.data;
       return {
         ...extracted,
-        imagePath: res.data?.image_path || extracted?.imagePath || null,
+        imagePath: resolveImagePath(res.data?.image_path || extracted?.imagePath),
         detectedFormType: res.data?.detected_form_type || 'B',
       };
     } catch (err) {
@@ -1085,7 +1095,7 @@ export async function getFormBById(id) {
   if (!USE_MOCK_FALLBACK) {
     try {
       const res = await apiClient.get(`/form-b/${id}`);
-      return { ...res.data, imagePath: res.data?.imagePath || res.data?.image_path || null };
+      return { ...res.data, imagePath: resolveImagePath(res.data?.imagePath || res.data?.image_path) };
     } catch (err) {
       console.warn(`Backend API /form-b/${id} failed:`, err);
     }
